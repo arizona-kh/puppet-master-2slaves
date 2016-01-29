@@ -1,3 +1,4 @@
+<p> Source https://github.com/garystafford/multi-vagrant-puppet-vms/blob/postblog/README.md</p>
 #<p>puppet-master-2slaves</p>
 
 <p><i> Vagrant mans and scripts for setting up the puppet master-2slaves environment</i></p>
