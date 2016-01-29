@@ -1,61 +1,63 @@
-# puppet-master-2slaves
-Vagrant mans and scripts for setting up the puppet master-2slaves environment
-Vagrant Multiple-VM Creation and Configuration
+#<p>puppet-master-2slaves</p>
+<p><i> Vagrant mans and scripts for setting up the puppet master-2slaves environment</i></p>
+<p><i>Vagrant Multiple-VM Creation and Configuration</i></p>
 
-Automatically provision multiple VMs with Vagrant and VirtualBox. Automatically install, configure, and test Puppet Master and Puppet Agents on those VMs. All instructions can be found in my blog post: http://wp.me/p1RD28-1kX
+<p><i>Automatically provision multiple VMs with Vagrant and VirtualBox. Automatically install, configure, and test Puppet Master and Puppet Agents on those VMs. All instructions can be found in my blog post: http://wp.me/p1RD28-1kX</i></p>
 
-JSON Configuration File
+<p><i>JSON Configuration File</i></p>
 
-The Vagrantfile retrieves multiple VM configurations from a separate nodes.json file. All VM configuration is contained in the JSON file. You can add additional VMs to the JSON file, following the existing pattern. The Vagrantfile will loop through all nodes (VMs) in the nodes.json file and create the VMs. You can easily swap configuration files for alternate environments since the Vagrantfile is designed to be generic and portable.
+<p><i>The Vagrantfile retrieves multiple VM configurations from a separate nodes.json file. All VM configuration is contained in the JSON file. You can add additional VMs to the JSON file, following the existing pattern. The Vagrantfile will loop through all nodes (VMs) in the nodes.json file and create the VMs. You can easily swap configuration files for alternate environments since the Vagrantfile is designed to be generic and portable.</i></p>
 
-Instructions
+<p><i>Instructions</i></p>
 
-vagrant up # brings up all VMs
-vagrant ssh puppet.example.com
+<p>vagrant up # brings up all VMs</p>
+<p>vagrant ssh puppet.example.com</p>
 
-sudo service puppetmaster status # test that puppet master was installed
-sudo service puppetmaster stop
-sudo puppet master --verbose --no-daemonize
-# Ctrl+C to kill puppet master
-sudo service puppetmaster start
-sudo puppet cert list --all # check for 'puppet' cert
+<p>sudo service puppetmaster status # test that puppet master was installed</p>
+<p>sudo service puppetmaster stop</p>
+<p>sudo puppet master --verbose --no-daemonize</p>
+<p># Ctrl+C to kill puppet master</p>
+<p>sudo service puppetmaster start</p>
+<p>sudo puppet cert list --all # check for 'puppet' cert</p>
 
-# Shift+Ctrl+T # new tab on host
-vagrant ssh node01.example.com # ssh into agent node
-sudo service puppet status # test that agent was installed
-sudo puppet agent --test --waitforcert=60 # initiate certificate signing request (CSR)
-Back on the Puppet Master server (puppet.example.com)
+<p># Shift+Ctrl+T # new tab on host</p>
+<p>vagrant ssh node01.example.com # ssh into agent node</p>
+<p>sudo service puppet status # test that agent was installed</p>
+<p>sudo puppet agent --test --waitforcert=60 # initiate certificate signing request (CSR)</p>
 
-sudo puppet cert list # should see 'node01.example.com' cert waiting for signature
-sudo puppet cert sign --all # sign the agent node(s) cert(s)
-sudo puppet cert list --all # check for signed cert(s)
-Forwarding Ports
+<p><i>Back on the Puppet Master server (puppet.example.com)</i></p>
 
-Used by Vagrant and VirtualBox. To create additional forwarding ports, add them to the 'ports' array. For example:
+<p>sudo puppet cert list # should see 'node01.example.com' cert waiting for signature</p>
+<p>sudo puppet cert sign --all # sign the agent node(s) cert(s)</p>
+<p>sudo puppet cert list --all # check for signed cert(s)</p>
+<p><i>Forwarding Ports</i></p>
 
- "ports": [
-        {
-          ":host": 1234,
-          ":guest": 2234,
-          ":id": "port-1"
-        },
-        {
-          ":host": 5678,
-          ":guest": 6789,
-          ":id": "port-2"
-        }
-      ]
-Useful Multi-VM Commands
+<p><i>Used by Vagrant and VirtualBox. To create additional forwarding ports, add them to the 'ports' array. For example:</i></p>
 
-The use of the specific name is optional.
+<p> "ports": [</p>
+<p>        {
+<p>          ":host": 1234,</p>
+<p>          ":guest": 2234,</p>
+<p>          ":id": "port-1"</p>
+<p>        },</p>
+<p>        {</p>
+<p>          ":host": 5678,</p>
+<p>          ":guest": 6789,</p>
+<p>          ":id": "port-2"</p>
+<p>        }</p>
+<p>      ]</p>
 
-vagrant up <machine>
-vagrant reload <machine>
-vagrant destroy -f <machine> && vagrant up <machine>
-vagrant status <machine>
-vagrant ssh <machine>
-vagrant global-status
-facter
-sudo tail -50 /var/log/syslog
-sudo tail -50 /var/log/puppet/masterhttp.log
-`tail -50 ~/VirtualBox\ VMs/postblog//Logs/VBox.log'
+<p><i>Useful Multi-VM Commands</i></p>
+
+<p><i>The use of the specific name is optional.</i></p>
+
+<p>vagrant up <machine></p>
+<p>vagrant reload <machine></p>
+<p>vagrant destroy -f <machine> && vagrant up <machine></p>
+<p>vagrant status <machine></p>
+<p>vagrant ssh <machine></p>
+<p>vagrant global-status</p>
+<p>facter</p>
+<p>sudo tail -50 /var/log/syslog</p>
+<p>sudo tail -50 /var/log/puppet/masterhttp.log</p>
+<p>`tail -50 ~/VirtualBox\ VMs/postblog//Logs/VBox.log'</p>
