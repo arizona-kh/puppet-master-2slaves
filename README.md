@@ -1,4 +1,5 @@
 #<p>puppet-master-2slaves</p>
+
 <p><i> Vagrant mans and scripts for setting up the puppet master-2slaves environment</i></p>
 <p><i>Vagrant Multiple-VM Creation and Configuration</i></p>
 
