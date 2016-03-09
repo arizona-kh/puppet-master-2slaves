@@ -12,26 +12,26 @@
 
 <p><i>Instructions</i></p>
 
-<p>vagrant up # brings up all VMs</p>
-<p>vagrant ssh puppet.example.com</p>
+<p>`vagrant up` # brings up all VMs</p>
+<p>`vagrant ssh puppet.example.com`</p>
 
-<p>sudo service puppetmaster status # test that puppet master was installed</p>
-<p>sudo service puppetmaster stop</p>
-<p>sudo puppet master --verbose --no-daemonize</p>
+<p>`sudo service puppetmaster status` # test that puppet master was installed</p>
+<p>`sudo service puppetmaster stop`</p>
+<p>`sudo puppet master --verbose --no-daemonize`</p>
 <p># Ctrl+C to kill puppet master</p>
-<p>sudo service puppetmaster start</p>
-<p>sudo puppet cert list --all # check for 'puppet' cert</p>
+<p>`sudo service puppetmaster start`</p>
+<p>`sudo puppet cert list --all` # check for 'puppet' cert</p>
 
 <p># Shift+Ctrl+T # new tab on host</p>
-<p>vagrant ssh node01.example.com # ssh into agent node</p>
-<p>sudo service puppet status # test that agent was installed</p>
-<p>sudo puppet agent --test --waitforcert=60 # initiate certificate signing request (CSR)</p>
+<p>`vagrant ssh node01.example.com` # ssh into agent node</p>
+<p>`sudo service puppet status` # test that agent was installed</p>
+<p>`sudo puppet agent --test --waitforcert=60` # initiate certificate signing request (CSR)</p>
 
 <p><i>Back on the Puppet Master server (puppet.example.com)</i></p>
 
-<p>sudo puppet cert list # should see 'node01.example.com' cert waiting for signature</p>
-<p>sudo puppet cert sign --all # sign the agent node(s) cert(s)</p>
-<p>sudo puppet cert list --all # check for signed cert(s)</p>
+<p>`sudo puppet cert list` # should see 'node01.example.com' cert waiting for signature</p>
+<p>`sudo puppet cert sign --all` # sign the agent node(s) cert(s)</p>
+<p>`sudo puppet cert list --all` # check for signed cert(s)</p>
 <p><i>Forwarding Ports</i></p>
 
 <p><i>Used by Vagrant and VirtualBox. To create additional forwarding ports, add them to the 'ports' array. For example:</i></p>
@@ -53,13 +53,13 @@
 
 <p><i>The use of the specific name is optional.</i></p>
 
-<p>vagrant up <machine></p>
-<p>vagrant reload <machine></p>
-<p>vagrant destroy -f <machine> && vagrant up <machine></p>
-<p>vagrant status <machine></p>
-<p>vagrant ssh <machine></p>
-<p>vagrant global-status</p>
-<p>facter</p>
-<p>sudo tail -50 /var/log/syslog</p>
-<p>sudo tail -50 /var/log/puppet/masterhttp.log</p>
-<p>`tail -50 ~/VirtualBox\ VMs/postblog//Logs/VBox.log'</p>
+<p>`vagrant up` <machine></p>
+<p>`vagrant reload` <machine></p>
+<p>`vagrant destroy -f <machine> && vagrant up <machine>`</p>
+<p>`vagrant status <machine>`</p>
+<p>`vagrant ssh <machine>`</p>
+<p>`vagrant global-status`</p>
+<p>`facter`</p>
+<p>`sudo tail -50 /var/log/syslog`</p>
+<p>`sudo tail -50 /var/log/puppet/masterhttp.log`</p>
+<p>`tail -50 ~/VirtualBox\ VMs/postblog//Logs/VBox.log`</p>
